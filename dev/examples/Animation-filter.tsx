@@ -2,22 +2,23 @@ import * as React from "react"
 import { motion } from "@framer"
 
 /**
- * An example of the onTap event
+ * An example of animating the filter property.
  */
 
 const style = {
     width: 100,
     height: 100,
-    background: "red",
+    background: "white",
+    opacity: 1,
+    // filter: "brightness(100%)",
 }
 
 export const App = () => {
     return (
         <motion.div
+            animate={{ filter: "brightness(0.5)" }}
+            transition={{ duration: 2 }}
             style={style}
-            onTapStart={() => console.log("onTapStart")}
-            onTap={() => console.log("onTap")}
-            onTapCancel={() => console.log("onTapCancel")}
         />
     )
 }

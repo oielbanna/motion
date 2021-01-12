@@ -84,8 +84,12 @@ export function useVariants(
     useInitialOrEveryRender(() => {
         const initialToSet = initial === false ? animate : initial
 
-        if (initialToSet && typeof initialToSet !== "boolean") {
-            setValues(visualElement, initialToSet as any)
+        if (
+            initialToSet &&
+            typeof initialToSet !== "boolean" &&
+            !isAnimationControls(initialToSet)
+        ) {
+            setValues(visualElement, initialToSet)
         }
     }, !isStatic)
 
@@ -167,6 +171,7 @@ function checkIfControllingVariants(props: MotionProps) {
         isVariantLabel(props.whileHover) ||
         isVariantLabel(props.whileDrag) ||
         isVariantLabel(props.whileTap) ||
+        isVariantLabel(props.whileFocus) ||
         isVariantLabel(props.exit)
     )
 }

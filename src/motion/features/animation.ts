@@ -14,9 +14,7 @@ const AnimationState = makeRenderlessComponent((props: FeatureProps) => {
      * to the underlying animation library. We only want to load that if we load this,
      * so people can optionally code split it out using the `m` component.
      */
-    if (!visualElement.animationState) {
-        visualElement.animationState = createAnimationState(visualElement)
-    }
+    visualElement.animationState ||= createAnimationState(visualElement)
 
     const variantContext = useVariantContext()
 
@@ -49,6 +47,7 @@ export const Animation: MotionFeature = {
     getComponent: ({
         animate,
         whileHover,
+        whileFocus,
         whileTap,
         whileDrag,
         exit,
@@ -56,6 +55,7 @@ export const Animation: MotionFeature = {
     }) => {
         return animate ||
             whileHover ||
+            whileFocus ||
             whileTap ||
             whileDrag ||
             exit ||

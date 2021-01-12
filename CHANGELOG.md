@@ -2,7 +2,64 @@
 
 Framer Motion adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.0.0] Unreleased
+## [3.2.1] 2020-01-11
+
+### Added
+
+-   Exporting `useVariantContext` for internal Framer use.
+
+## [3.2.0] 2020-01-08
+
+### Added
+
+-   Support for hex `alpha`, ie `#FFF0` and `#FFFFFF00`.
+-   Support for default `filter` values. For example, when animating from `brightness(50%)`, the animation will start from `brightness(100%)`rather than`brightness(0%)`.
+
+## [3.1.5] 2020-01-08
+
+### Fixed
+
+-   Hover events are now blocked while layout is being measured.
+
+## [3.1.4] 2020-01-05
+
+### Fixed
+
+-   Blocking layout animations to/from zero bounding boxes.
+-   `onTapCancel` now fires correctly on touch screens.
+-   `createDomMotionComponent` types.
+
+## [3.1.3] 2020-01-04
+
+### Fixed
+
+-   Fixed types for `pathSpacing` and `pathOffset`.
+
+## [3.1.2] 2020-01-04
+
+### Fixed
+
+-   `snapToCursor` respects drag axis.
+
+## [3.1.1] 2020-12-18
+
+### Updated
+
+-   Updated dependencies.
+
+## [3.1.0] 2020-12-18
+
+### Added
+
+-   `whileFocus`
+
+## [3.0.1] 2020-12-18
+
+### Fixed
+
+-   Error when mixing `initial={false}` and `animate={controls}`.
+
+## [3.0.0] 2020-12-16
 
 ### Added
 
@@ -12,7 +69,7 @@ Framer Motion adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
--   New behaviour for when values are removed from animation props (`animate`, `whileHover`, `exit` etc). The value will be searched for in active props of a lower priority running (`style` <- `animate` <- `whileHover` <- `whileTap` <- `whileDrag` <- `exit`)
+-   New behaviour for when values are removed from animation props (`animate`, `whileHover`, `exit` etc). The value will be searched for in active props of a lower priority running (`style` <- `animate` <- `whileHover` <- `whileTap` <- `whileDrag` <- `exit`). This may introduce subtle behavioural changes, hence the major.
 
 ### Removed
 

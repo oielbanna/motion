@@ -1,6 +1,7 @@
 {
     "name": "framer-motion",
-    "version": "3.0.0-rc.33",
+    "version": "3.2.1",
+    "description": "An open source and production-ready motion library for React on the web",
     "main": "dist/framer-motion.cjs.js",
     "module": "dist/framer-motion.es.js",
     "types": "types/index.d.ts",
@@ -30,6 +31,7 @@
         "build": "tsc -p . && rollup -c && make api",
         "watch": "concurrently \"tsc --watch -p .\" \"rollup -c -w\"",
         "prepublishOnly": "yarn test && yarn build",
+        "postpublish": "git push --tags",
         "measure": "bundlesize",
         "deduplicate": "yarn-deduplicate yarn.lock",
         "start-dev-server": "webpack-dev-server --config=dev/webpack/config.js"
@@ -91,11 +93,10 @@
         "yarn-deduplicate": "^1.1.1"
     },
     "dependencies": {
-        "@emotion/is-prop-valid": "^0.8.2",
-        "framesync": "^4.1.0",
+        "framesync": "^5.0.0",
         "hey-listen": "^1.0.8",
-        "popmotion": "9.0.1",
-        "style-value-types": "^3.1.9",
+        "popmotion": "^9.1.0",
+        "style-value-types": "^4.0.1",
         "tslib": "^1.10.0"
     },
     "optionalDependencies": {
@@ -120,11 +121,11 @@
     "bundlesize": [
         {
             "path": "./dist/framer-motion.js",
-            "maxSize": "28.5 kB"
+            "maxSize": "28.8 kB"
         },
         {
             "path": "./dist/minimal-component.js",
-            "maxSize": "13.15 kB"
+            "maxSize": "13.4 kB"
         }
     ]
 }

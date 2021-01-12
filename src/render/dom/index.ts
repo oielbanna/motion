@@ -22,6 +22,8 @@ export type CustomDomComponent<Props> = React.ForwardRefExoticComponent<
         React.RefAttributes<SVGElement | HTMLElement>
 >
 
+type MotionComponents = HTMLMotionComponents & SVGMotionComponents
+
 const allMotionFeatures = [
     MeasureLayout,
     Animation,
@@ -51,10 +53,10 @@ const domBaseConfig = {
  * @public
  */
 export function createMotionProxy(defaultFeatures: MotionFeature[]) {
-    type CustomMotionComponent = { custom: typeof custom }
-    type Motion = HTMLMotionComponents &
-        SVGMotionComponents &
-        CustomMotionComponent
+    type CustomMotionComponent = {
+        custom: typeof custom
+    }
+    type Motion = MotionComponents & CustomMotionComponent
 
     const config: MotionComponentConfig<HTMLElement | SVGElement> = {
         ...domBaseConfig,
@@ -104,9 +106,12 @@ export const motion = /*@__PURE__*/ createMotionProxy(allMotionFeatures)
  *
  * @public
  */
-export function createDomMotionComponent(key: string) {
-    return createMotionComponent(key, {
+export function createDomMotionComponent<T extends keyof MotionComponents>(
+    key: T
+) {
+    const config: MotionComponentConfig<HTMLElement | SVGElement> = {
         ...domBaseConfig,
         defaultFeatures: allMotionFeatures,
-    })
+    }
+    return createMotionComponent(key, config) as MotionComponents[T]
 }

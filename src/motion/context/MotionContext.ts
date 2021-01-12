@@ -9,6 +9,7 @@ export interface VariantContextProps {
     whileHover?: VariantLabels
     whileTap?: VariantLabels
     whileDrag?: VariantLabels
+    whileFocus?: VariantLabels
     exit?: VariantLabels
 }
 
@@ -21,6 +22,9 @@ export const MotionContext = createContext<MotionContextProps>({
     variantContext: {},
 })
 
+/**
+ * @internal
+ */
 export function useVariantContext() {
     return useContext(MotionContext).variantContext
 }
